@@ -1,0 +1,10 @@
+com\htc\pojo\Tag.class
+com\htc\pojo\Note.class
+com\htc\noteapp\SecondaryController.class
+com\htc\services\TagService.class
+com\htc\noteapp\App.class
+module-info.class
+com\htc\services\NoteService.class
+com\htc\noteapp\PrimaryController.class
+com\htc\services\BaseService.class
+com\htc\utils\MyConnector.class
