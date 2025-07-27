@@ -4,6 +4,7 @@
  */
 package com.htc.pojo;
 
+import java.util.Date;
 import java.time.LocalDate;
 
 /**
@@ -11,33 +12,30 @@ import java.time.LocalDate;
  * @author Admin
  */
 public class Note {
-
     /**
      * @return the createdDate
      */
-    public LocalDate getCreatedDate() {
-        return createdDate;
-    }
-
-    /**
-     * @param createdDate the createdDate to set
-     */
-    public void setCreatedDate(LocalDate createdDate) {
-        this.createdDate = createdDate;
-    }
+    
+    
     private int id;
     private String title;
     private String content;
-    private LocalDate createdDate;
+    private Date createdDate;
     private Tag tag;
 
-    public Note(int id, String title, String content,String createdDate, Tag tag) {
+    public Note(int id, String title, String content, Date createdDate, Tag tag) {
         this.id = id;
         this.title = title;
         this.content = content;
-        this.createdDate = LocalDate.parse(createdDate);
+        this.createdDate = createdDate;
         this.tag = tag;
     }
+
+    
+
+    
+    
+    
 
     /**
      * @return the id
@@ -98,6 +96,20 @@ public class Note {
      */
     public void setTag(Tag tag) {
         this.tag = tag;
+    }
+
+    /**
+     * @return the createdDate
+     */
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    /**
+     * @param createdDate the createdDate to set
+     */
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
     }
     
 }

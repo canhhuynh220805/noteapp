@@ -19,6 +19,6 @@
             <ComboBox fx:id="cbTags" prefWidth="150.0" promptText="Tags" />
          </children>
       </HBox>
-      <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="54.0" text="Thêm" />
+      <Button mnemonicParsing="false" onAction="#handleAddNote" prefHeight="40.0" prefWidth="54.0" text="Thêm" />
    </children>
 </VBox>

@@ -1,5 +1,6 @@
 com\htc\pojo\Tag.class
 com\htc\pojo\Note.class
+com\htc\services\UpdateNoteService.class
 com\htc\noteapp\SecondaryController.class
 com\htc\services\TagService.class
 com\htc\noteapp\App.class

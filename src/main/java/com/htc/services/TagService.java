@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,12 +20,18 @@ public class TagService extends BaseService<Tag>{
 
     @Override
     public PreparedStatement getStm(Connection conn) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return conn.prepareCall("select * from tag ");
     }
 
     @Override
     public List<Tag> getResult(ResultSet rs) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        List<Tag> tags = new ArrayList<>();
+        while(rs.next()){
+            Tag t = new Tag(rs.getInt("id"), rs.getString("name"));
+            tags.add(t);
+        }
+        
+        return tags;
     }
     
 }
