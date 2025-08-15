@@ -4,21 +4,34 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="817.0" styleClass="Main" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.htc.noteapp.PrimaryController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="525.0" prefWidth="891.0" styleClass="Main" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.htc.noteapp.PrimaryController">
    <children>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Quản lí ghi chú" />
       <TableView fx:id="tbNotes" prefHeight="200.0" prefWidth="200.0" />
       <HBox prefHeight="100.0" prefWidth="200.0" styleClass="Main">
          <children>
-            <TextField fx:id="txtTitle" promptText="Nhập tiêu đề" />
-            <TextField fx:id="txtContent" promptText="Nhập nội dung ghi chú" />
-            <ComboBox fx:id="cbTags" prefWidth="150.0" promptText="Tags" />
+            <HBox prefHeight="79.0" prefWidth="326.0">
+               <children>
+                  <TextField fx:id="txtTitle" promptText="Nhập tiêu đề" />
+                  <TextField fx:id="txtContent" promptText="Nhập nội dung ghi chú" />
+               </children>
+            </HBox>
+            <ComboBox fx:id="cbTags" prefHeight="29.0" prefWidth="96.0" promptText="Tags" />
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <ToggleButton fx:id="boldToggleButton" mnemonicParsing="false" onAction="#handlePreview" prefHeight="30.0" prefWidth="108.0" text="in đậm" />
+                  <ToggleButton fx:id="italicToggleButton" mnemonicParsing="false" onAction="#handlePreview" prefHeight="30.0" prefWidth="104.0" text="in nghiêng" />
+               </children>
+            </VBox>
          </children>
       </HBox>
-      <Button mnemonicParsing="false" onAction="#handleAddNote" prefHeight="40.0" prefWidth="54.0" text="Thêm" />
+      <TextFlow fx:id="txtChange" prefHeight="100.0" prefWidth="870.0" />
+      <Button mnemonicParsing="false" onAction="#handleAddNote" prefHeight="48.0" prefWidth="54.0" text="Thêm" />
    </children>
 </VBox>

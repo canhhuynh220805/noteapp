@@ -1,10 +1,15 @@
 com\htc\pojo\Tag.class
+com\htc\services\ItalicTextDecorator.class
+com\htc\services\NormalText.class
 com\htc\pojo\Note.class
+com\htc\services\SimpleText.class
 com\htc\services\UpdateNoteService.class
+com\htc\services\TextDecorator.class
 com\htc\noteapp\SecondaryController.class
 com\htc\services\TagService.class
 com\htc\noteapp\App.class
 module-info.class
+com\htc\services\BoldTextDecorator.class
 com\htc\services\NoteService.class
 com\htc\noteapp\PrimaryController.class
 com\htc\services\BaseService.class

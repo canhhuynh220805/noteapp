@@ -22,6 +22,8 @@ public class Note {
     private String content;
     private Date createdDate;
     private Tag tag;
+    private boolean isBold;
+    private boolean isItalic;
 
     public Note(int id, String title, String content, Date createdDate, Tag tag) {
         this.id = id;
@@ -29,13 +31,17 @@ public class Note {
         this.content = content;
         this.createdDate = createdDate;
         this.tag = tag;
+        this.isBold = this.isItalic = false;
+    }
+    
+    public Note(String title, String content, Date createdDate, Tag tag) {
+        this.title = title;
+        this.content = content;
+        this.createdDate = createdDate;
+        this.tag = tag;
+        this.isBold = this.isItalic = false;
     }
 
-    
-
-    
-    
-    
 
     /**
      * @return the id
@@ -110,6 +116,34 @@ public class Note {
      */
     public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
+    }
+
+    /**
+     * @return the isBold
+     */
+    public boolean isIsBold() {
+        return isBold;
+    }
+
+    /**
+     * @param isBold the isBold to set
+     */
+    public void setIsBold(boolean isBold) {
+        this.isBold = isBold;
+    }
+
+    /**
+     * @return the isItalic
+     */
+    public boolean isIsItalic() {
+        return isItalic;
+    }
+
+    /**
+     * @param isItalic the isItalic to set
+     */
+    public void setIsItalic(boolean isItalic) {
+        this.isItalic = isItalic;
     }
     
 }

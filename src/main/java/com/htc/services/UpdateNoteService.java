@@ -25,21 +25,22 @@ public class UpdateNoteService {
         
         conn.setAutoCommit(false);
         
-        String sql = "insert into note(id, title, content, created_date ,tag_id) VALUES(?,?,?,?,?)";
+        String sql = "insert into note(title, content, created_date ,tag_id, is_bold, is_italic) VALUES(?,?,?,?,?,?)";
         
         PreparedStatement stm = conn.prepareCall(sql);
-        stm.setInt(1, n.getId());
-        stm.setString(2, n.getTitle());
-        stm.setString(3, n.getContent());
-        stm.setDate(4, (Date)n.getCreatedDate());
-        stm.setInt(5, n.getTag().getId());
-        
+        stm.setString(1, n.getTitle());
+        stm.setString(2, n.getContent());
+        stm.setDate(3, (Date)n.getCreatedDate());
+        stm.setInt(4, n.getTag().getId());
+        stm.setBoolean(5, n.isIsBold());
+        stm.setBoolean(6, n.isIsItalic());
         if (stm.executeUpdate() > 0) {
             int nId = -1;
             ResultSet r = stm.getGeneratedKeys();
-            if (r.next())
+            if (r.next()){
                 nId = r.getInt(1);
-            
+                n.setId(nId);
+            }
             conn.commit();
         }
         else{

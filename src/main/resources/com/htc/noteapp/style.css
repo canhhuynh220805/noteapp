@@ -19,6 +19,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-font-size: 30;
     -fx-stroke: white;
     -fx-stroke-width: 2;
+    -fx-font-weight: bold;
+    -fx-font-style: italic;
+}
+
+TextFlow{
+    -fx-background-color: white;
 }
 
 
