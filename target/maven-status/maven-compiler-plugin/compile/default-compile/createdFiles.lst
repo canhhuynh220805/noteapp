@@ -6,6 +6,7 @@ com\htc\services\SimpleText.class
 com\htc\services\UpdateNoteService.class
 com\htc\services\TextDecorator.class
 com\htc\noteapp\SecondaryController.class
+com\htc\services\BaseTemplateNote.class
 com\htc\services\TagService.class
 com\htc\noteapp\App.class
 module-info.class

@@ -25,8 +25,8 @@
             <ComboBox fx:id="cbTags" prefHeight="29.0" prefWidth="96.0" promptText="Tags" />
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <ToggleButton fx:id="boldToggleButton" mnemonicParsing="false" onAction="#handlePreview" prefHeight="30.0" prefWidth="108.0" text="in đậm" />
-                  <ToggleButton fx:id="italicToggleButton" mnemonicParsing="false" onAction="#handlePreview" prefHeight="30.0" prefWidth="104.0" text="in nghiêng" />
+                  <ToggleButton fx:id="boldToggleButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="108.0" text="in đậm" />
+                  <ToggleButton fx:id="italicToggleButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="104.0" text="in nghiêng" />
                </children>
             </VBox>
          </children>

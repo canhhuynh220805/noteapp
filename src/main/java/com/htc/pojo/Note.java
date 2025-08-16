@@ -25,14 +25,17 @@ public class Note {
     private boolean isBold;
     private boolean isItalic;
 
-    public Note(int id, String title, String content, Date createdDate, Tag tag) {
+    public Note(int id, String title, String content, Date createdDate, Tag tag, boolean isBold, boolean isItalic) {
         this.id = id;
         this.title = title;
         this.content = content;
         this.createdDate = createdDate;
         this.tag = tag;
-        this.isBold = this.isItalic = false;
+        this.isBold = isBold;
+        this.isItalic = isItalic;
     }
+
+    
     
     public Note(String title, String content, Date createdDate, Tag tag) {
         this.title = title;

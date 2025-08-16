@@ -40,9 +40,9 @@ public class PrimaryController implements Initializable{
     @FXML TextField txtContent;
     @FXML ComboBox<Tag> cbTags;
     @FXML TextFlow txtChange;
-    @FXML private ToggleButton boldToggleButton;
-    @FXML private ToggleButton italicToggleButton;
-    
+    @FXML ToggleButton boldToggleButton;
+    @FXML ToggleButton italicToggleButton;
+    @FXML ComboBox<String> cbViews;
 
     private static final BaseService<Note> noteService = new NoteService();
     private static final BaseService<Tag> tagService = new TagService();
@@ -58,8 +58,6 @@ public class PrimaryController implements Initializable{
             System.getLogger(PrimaryController.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         }
         
-        this.txtContent.textProperty().addListener((obs, oldV, newV) -> handlePreview(null));
-       
 //        this.txtContent.textProperty().addListener((p, oldValue, newValue) ->{
 //            this.txtChange.getChildren().clear();
 //            
@@ -77,11 +75,17 @@ public class PrimaryController implements Initializable{
                 return;
             }
             Date date = new Date(System.currentTimeMillis());
-            Note n = new Note(this.tbNotes.getItems().size() + 1, txtTitle.getText(), txtContent.getText(),date ,this.cbTags.getSelectionModel().getSelectedItem());
+            Note n = new Note(txtTitle.getText(),
+                    txtContent.getText(),date ,this.cbTags.getSelectionModel().getSelectedItem());
+            if(boldToggleButton.isSelected())
+                n.setIsBold(true);
+            if(italicToggleButton.isSelected())
+                n.setIsItalic(true);
             this.uNoteService.addNote(n);
             this.tbNotes.getItems().add(n);
             txtTitle.clear();
             txtContent.clear();
+            
             this.cbTags.getSelectionModel().clearSelection();
             this.cbTags.setPromptText("Tags");
         }
@@ -90,22 +94,23 @@ public class PrimaryController implements Initializable{
         }
     }
     
-    @FXML
-    public void handlePreview(ActionEvent event){
-        Text textNote = new Text(this.txtContent.getText());
-        
+
+    public void readFormmat(Note n){
+        Text textNote = new Text(n.getContent());
         NormalText s = new SimpleText(textNote);
-        
-        if(boldToggleButton.isSelected()){
+        if(n.isIsBold())
+        {
             s = new BoldTextDecorator(s);
         }
-        
-        if(italicToggleButton.isSelected()){
+        if(n.isIsItalic()){
             s = new ItalicTextDecorator(s);
         }
-        String finalCss = s.generateCss();
+
+        String css = s.generateCss();
+
         Text finalText = s.getTxt();
-        finalText.setStyle(finalCss);
+        finalText.setStyle(css);
+
         this.txtChange.getChildren().clear();
         this.txtChange.getChildren().add(finalText);
     }
@@ -122,7 +127,7 @@ public class PrimaryController implements Initializable{
         
         TableColumn colContent = new TableColumn("Nội dung");
         colContent.setCellValueFactory(new PropertyValueFactory("content"));
-        colContent.setPrefWidth(100);
+        colContent.setPrefWidth(120);
         
         TableColumn colDate = new TableColumn("Ngày tạo");
         colDate.setCellValueFactory(new PropertyValueFactory("createdDate"));
@@ -132,8 +137,21 @@ public class PrimaryController implements Initializable{
         colTag.setCellValueFactory(new PropertyValueFactory("tag"));
         colTag.setPrefWidth(100);
         
+        TableColumn colAction = new TableColumn("Định dạng");
+        colAction.setCellFactory(p ->{
+            TableCell cell = new  TableCell();
+            
+            Button b = new Button("Xem định dạng");
+            b.setOnAction(event ->{
+                Note n = (Note)cell.getTableRow().getItem();
+                readFormmat(n);
+            });
+            cell.setGraphic(b);
+            
+            return cell;
+        });
         
-        this.tbNotes.getColumns().addAll(colId, colTitle, colContent, colDate, colTag);
+        this.tbNotes.getColumns().addAll(colId, colTitle, colContent, colDate, colTag, colAction);
         
     }
     
