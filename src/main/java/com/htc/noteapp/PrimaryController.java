@@ -3,13 +3,17 @@ package com.htc.noteapp;
 import com.htc.pojo.Note;
 import com.htc.pojo.Tag;
 import com.htc.services.BaseService;
+import com.htc.services.BaseTemplateViewServices;
 import com.htc.services.BoldTextDecorator;
+import com.htc.services.DefaultViewServices;
 import com.htc.services.ItalicTextDecorator;
+import com.htc.services.MinimalistViewServices;
 import com.htc.services.NormalText;
 import com.htc.services.NoteService;
 import com.htc.services.SimpleText;
 import com.htc.services.TagService;
 import com.htc.services.UpdateNoteService;
+import com.htc.services.WorkViewServices;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
@@ -42,7 +46,7 @@ public class PrimaryController implements Initializable{
     @FXML TextFlow txtChange;
     @FXML ToggleButton boldToggleButton;
     @FXML ToggleButton italicToggleButton;
-    @FXML ComboBox<String> cbViews;
+    @FXML ComboBox<BaseTemplateViewServices> cbViews;
 
     private static final BaseService<Note> noteService = new NoteService();
     private static final BaseService<Tag> tagService = new TagService();
@@ -50,9 +54,28 @@ public class PrimaryController implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
+            ObservableList<BaseTemplateViewServices> viewModes = FXCollections.observableArrayList();
+            viewModes.add(new DefaultViewServices());
+            viewModes.add(new MinimalistViewServices());
+            viewModes.add(new WorkViewServices());
+            this.cbViews.setItems(viewModes);
+            this.cbViews.getSelectionModel().selectFirst();
+            
+            this.cbViews.getSelectionModel().selectedItemProperty().addListener(
+                    (p, oldView, newView)->{
+                        if(newView != null){
+                            this.tbNotes.getColumns().clear();
+                            newView.loadColumn(tbNotes, txtChange);
+                        }
+            });
+            
+            BaseTemplateViewServices defaultView = this.cbViews.getSelectionModel().getSelectedItem();
+            if(defaultView != null)
+                defaultView.loadColumn(tbNotes, txtChange);
+            
+            
             this.cbTags.setItems(FXCollections.observableList(tagService.list()));
             
-            this.loadColumn();
             this.tbNotes.setItems(FXCollections.observableList(noteService.list()));
         } catch (SQLException ex) {
             System.getLogger(PrimaryController.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
@@ -94,65 +117,5 @@ public class PrimaryController implements Initializable{
         }
     }
     
-
-    public void readFormmat(Note n){
-        Text textNote = new Text(n.getContent());
-        NormalText s = new SimpleText(textNote);
-        if(n.isIsBold())
-        {
-            s = new BoldTextDecorator(s);
-        }
-        if(n.isIsItalic()){
-            s = new ItalicTextDecorator(s);
-        }
-
-        String css = s.generateCss();
-
-        Text finalText = s.getTxt();
-        finalText.setStyle(css);
-
-        this.txtChange.getChildren().clear();
-        this.txtChange.getChildren().add(finalText);
-    }
-    
-    
-    public void loadColumn(){
-        TableColumn colId = new TableColumn("Id");
-        colId.setCellValueFactory(new PropertyValueFactory("id"));
-        colId.setPrefWidth(50);
-        
-        TableColumn colTitle = new TableColumn("Tiêu đề");
-        colTitle.setCellValueFactory(new PropertyValueFactory("title"));
-        colTitle.setPrefWidth(100);
-        
-        TableColumn colContent = new TableColumn("Nội dung");
-        colContent.setCellValueFactory(new PropertyValueFactory("content"));
-        colContent.setPrefWidth(120);
-        
-        TableColumn colDate = new TableColumn("Ngày tạo");
-        colDate.setCellValueFactory(new PropertyValueFactory("createdDate"));
-        colDate.setPrefWidth(100);
-        
-        TableColumn colTag = new TableColumn("Tag");
-        colTag.setCellValueFactory(new PropertyValueFactory("tag"));
-        colTag.setPrefWidth(100);
-        
-        TableColumn colAction = new TableColumn("Định dạng");
-        colAction.setCellFactory(p ->{
-            TableCell cell = new  TableCell();
-            
-            Button b = new Button("Xem định dạng");
-            b.setOnAction(event ->{
-                Note n = (Note)cell.getTableRow().getItem();
-                readFormmat(n);
-            });
-            cell.setGraphic(b);
-            
-            return cell;
-        });
-        
-        this.tbNotes.getColumns().addAll(colId, colTitle, colContent, colDate, colTag, colAction);
-        
-    }
     
 }

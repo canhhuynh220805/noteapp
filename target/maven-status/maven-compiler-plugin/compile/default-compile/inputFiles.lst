@@ -7,11 +7,14 @@ D:\noteapp\src\main\java\com\htc\services\BaseService.java
 D:\noteapp\src\main\java\com\htc\services\TextDecorator.java
 D:\noteapp\src\main\java\com\htc\services\NoteService.java
 D:\noteapp\src\main\java\com\htc\services\SimpleText.java
+D:\noteapp\src\main\java\com\htc\services\BaseTemplateViewServices.java
+D:\noteapp\src\main\java\com\htc\services\DefaultViewServices.java
 D:\noteapp\src\main\java\module-info.java
 D:\noteapp\src\main\java\com\htc\noteapp\App.java
+D:\noteapp\src\main\java\com\htc\services\MinimalistViewServices.java
+D:\noteapp\src\main\java\com\htc\services\WorkViewServices.java
 D:\noteapp\src\main\java\com\htc\pojo\Tag.java
 D:\noteapp\src\main\java\com\htc\services\TagService.java
 D:\noteapp\src\main\java\com\htc\services\NormalText.java
 D:\noteapp\src\main\java\com\htc\services\BoldTextDecorator.java
 D:\noteapp\src\main\java\com\htc\pojo\Note.java
-D:\noteapp\src\main\java\com\htc\services\BaseTemplateNote.java

@@ -2,11 +2,13 @@ com\htc\pojo\Tag.class
 com\htc\services\ItalicTextDecorator.class
 com\htc\services\NormalText.class
 com\htc\pojo\Note.class
+com\htc\services\BaseTemplateViewServices.class
 com\htc\services\SimpleText.class
+com\htc\services\WorkViewServices.class
 com\htc\services\UpdateNoteService.class
 com\htc\services\TextDecorator.class
 com\htc\noteapp\SecondaryController.class
-com\htc\services\BaseTemplateNote.class
+com\htc\services\DefaultViewServices.class
 com\htc\services\TagService.class
 com\htc\noteapp\App.class
 module-info.class
@@ -14,4 +16,5 @@ com\htc\services\BoldTextDecorator.class
 com\htc\services\NoteService.class
 com\htc\noteapp\PrimaryController.class
 com\htc\services\BaseService.class
+com\htc\services\MinimalistViewServices.class
 com\htc\utils\MyConnector.class
