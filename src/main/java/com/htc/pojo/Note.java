@@ -34,7 +34,15 @@ public class Note {
         this.isBold = isBold;
         this.isItalic = isItalic;
     }
-
+    
+    public Note(String title, String content, Date createdDate, Tag tag, boolean isBold, boolean isItalic) {
+        this.title = title;
+        this.content = content;
+        this.createdDate = createdDate;
+        this.tag = tag;
+        this.isBold = isBold;
+        this.isItalic = isItalic;
+    }
     
     
     public Note(String title, String content, Date createdDate, Tag tag) {

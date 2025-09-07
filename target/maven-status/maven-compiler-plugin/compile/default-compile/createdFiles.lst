@@ -1,6 +1,7 @@
 com\htc\pojo\Tag.class
 com\htc\services\ItalicTextDecorator.class
 com\htc\services\NormalText.class
+com\htc\services\TagFlyweightFactory.class
 com\htc\pojo\Note.class
 com\htc\services\BaseTemplateViewServices.class
 com\htc\services\SimpleText.class

@@ -33,6 +33,6 @@
       </HBox>
       <TextFlow fx:id="txtChange" prefHeight="49.0" prefWidth="870.0" />
       <Button mnemonicParsing="false" onAction="#handleAddNote" prefHeight="31.0" prefWidth="54.0" text="Thêm" />
-      <ComboBox fx:id="cbViews" prefWidth="150.0" promptText="Chế độ xem" />
+      <ComboBox fx:id="cbViews" prefWidth="150.0" />
    </children>
 </VBox>

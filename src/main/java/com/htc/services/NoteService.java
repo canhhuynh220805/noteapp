@@ -31,7 +31,8 @@ public class NoteService extends BaseService<Note>{
     public List<Note> getResult(ResultSet rs) throws SQLException {
         List<Note> notes = new ArrayList<>();
         while(rs.next()){
-            Tag tag = new Tag(rs.getInt("t.id"), rs.getString("t.name"));
+//            Tag tag = new Tag(rs.getInt("t.id"), rs.getString("t.name"));
+            Tag tag = TagFlyweightFactory.getTag(rs.getInt("t.id"), rs.getString("t.name"));
             int id = rs.getInt("n.id");
             String title = rs.getString("n.title");
             String content = rs.getString("n.content");    

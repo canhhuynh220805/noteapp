@@ -16,5 +16,6 @@ D:\noteapp\src\main\java\com\htc\services\WorkViewServices.java
 D:\noteapp\src\main\java\com\htc\pojo\Tag.java
 D:\noteapp\src\main\java\com\htc\services\TagService.java
 D:\noteapp\src\main\java\com\htc\services\NormalText.java
+D:\noteapp\src\main\java\com\htc\services\TagFlyweightFactory.java
 D:\noteapp\src\main\java\com\htc\services\BoldTextDecorator.java
 D:\noteapp\src\main\java\com\htc\pojo\Note.java
